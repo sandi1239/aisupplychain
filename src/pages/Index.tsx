@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Navbar } from '@/components/sections/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { LogoBanner } from '@/components/sections/LogoBanner';
@@ -24,7 +25,12 @@ const Index = () => {
   };
 
   return (
-    <main className="min-h-screen">
+    <motion.main 
+      className="min-h-screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <Navbar onGetStarted={scrollToForm} />
       
       <Hero onGetStarted={scrollToForm} />
@@ -56,7 +62,7 @@ const Index = () => {
       <FreeGift />
       
       <Footer onGetStarted={scrollToForm} />
-    </main>
+    </motion.main>
   );
 };
 
