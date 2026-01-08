@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Navbar } from '@/components/sections/Navbar';
 import { Hero } from '@/components/sections/Hero';
+import { LogoBanner } from '@/components/sections/LogoBanner';
 import { PainPoints } from '@/components/sections/PainPoints';
 import { Solution } from '@/components/sections/Solution';
 import { Stats } from '@/components/sections/Stats';
@@ -23,6 +24,8 @@ const Index = () => {
       <Navbar onGetStarted={scrollToForm} />
       
       <Hero onGetStarted={scrollToForm} />
+      
+      <LogoBanner />
       
       <PainPoints />
       
