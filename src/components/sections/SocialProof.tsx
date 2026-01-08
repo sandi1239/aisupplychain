@@ -5,10 +5,18 @@ import avatarImg from '@/assets/avatar.jpg';
 import novartisLogo from '@/assets/novartis-logo.svg';
 import sandozLogo from '@/assets/sandoz-logo.svg';
 import sandozLekLogo from '@/assets/sandoz-lek-logo.png';
+import building1 from '@/assets/buildings/building-1.jpg';
+import building2 from '@/assets/buildings/building-2.jpg';
+import building3 from '@/assets/buildings/building-3.jpg';
+import building4 from '@/assets/buildings/building-4.jpg';
+import building5 from '@/assets/buildings/building-5.jpg';
+import building6 from '@/assets/buildings/building-6.jpg';
 
 export const SocialProof = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const buildingImages = [building1, building2, building3, building4, building5, building6];
 
   const testimonials = [
     {
@@ -16,180 +24,180 @@ export const SocialProof = () => {
       author: "Supply Chain Director",
       company: "Major Pharma Manufacturing Site",
       rating: 5,
-      avatar: "SC",
       timeAgo: "2 days ago",
       likes: 24,
       comments: 5,
+      size: "large" as const,
     },
     {
-      quote: "The stockout predictions have been incredibly accurate. We prevented three critical shortages in the first quarter alone.",
+      quote: "The stockout predictions have been incredibly accurate.",
       author: "Operations Manager",
       company: "Contract Manufacturing Organization",
       rating: 5,
-      avatar: "OM",
       timeAgo: "1 week ago",
       likes: 18,
       comments: 3,
+      size: "small" as const,
     },
     {
       quote: "Finally, someone who understands pharma supply chain. The ROI was visible within the first month.",
       author: "VP of Operations",
       company: "Mid-Sized Pharmaceutical Company",
       rating: 5,
-      avatar: "VP",
       timeAgo: "3 days ago",
       likes: 31,
       comments: 8,
+      size: "medium" as const,
     },
     {
       quote: "Our inventory accuracy went from 85% to 99.2% in just 3 months. Game changer for compliance audits.",
       author: "Quality Assurance Lead",
       company: "Biotech Startup",
       rating: 5,
-      avatar: "QA",
       timeAgo: "5 days ago",
       likes: 42,
       comments: 12,
+      size: "large" as const,
     },
     {
-      quote: "The dashboard visibility alone justified the investment. No more hunting through spreadsheets.",
+      quote: "No more hunting through spreadsheets.",
       author: "Planning Manager",
       company: "Generic Drug Manufacturer",
       rating: 5,
-      avatar: "PM",
       timeAgo: "1 day ago",
       likes: 15,
       comments: 2,
+      size: "small" as const,
     },
     {
       quote: "Reduced our lead time variability by 40%. Customers are noticing the improvement.",
       author: "Customer Service Director",
       company: "Pharmaceutical Distributor",
       rating: 5,
-      avatar: "CS",
       timeAgo: "4 days ago",
       likes: 27,
       comments: 6,
+      size: "medium" as const,
     },
     {
       quote: "Integration with our SAP system was seamless. Expected months of headaches, got days of setup.",
       author: "IT Manager",
       company: "API Manufacturer",
       rating: 5,
-      avatar: "IT",
       timeAgo: "2 weeks ago",
       likes: 33,
       comments: 9,
+      size: "medium" as const,
     },
     {
-      quote: "The automated alerts caught a supplier issue before it became a crisis. Worth every penny.",
+      quote: "Worth every penny.",
       author: "Procurement Director",
       company: "Hospital Supply Chain",
       rating: 5,
-      avatar: "PD",
       timeAgo: "6 days ago",
       likes: 21,
       comments: 4,
+      size: "small" as const,
     },
     {
       quote: "Our team morale improved dramatically. Less manual work means more strategic thinking.",
       author: "HR Business Partner",
       company: "Global Pharma Company",
       rating: 5,
-      avatar: "HR",
       timeAgo: "3 days ago",
       likes: 19,
       comments: 7,
+      size: "large" as const,
     },
     {
       quote: "Compliance reporting that used to take 2 days now takes 2 hours. Auditors are impressed.",
       author: "Regulatory Affairs Manager",
       company: "Clinical Trial Supplier",
       rating: 5,
-      avatar: "RA",
       timeAgo: "1 week ago",
       likes: 38,
       comments: 11,
+      size: "medium" as const,
     },
     {
-      quote: "The demand forecasting accuracy improved by 35%. We're finally ahead of the curve.",
+      quote: "Ahead of the curve now.",
       author: "Demand Planner",
       company: "OTC Manufacturer",
       rating: 5,
-      avatar: "DP",
       timeAgo: "4 days ago",
       likes: 29,
       comments: 5,
+      size: "small" as const,
     },
     {
       quote: "Cut our safety stock by 25% without a single stockout. That's real working capital freed up.",
       author: "Finance Controller",
       company: "Specialty Pharma",
       rating: 5,
-      avatar: "FC",
       timeAgo: "2 days ago",
       likes: 44,
       comments: 13,
+      size: "large" as const,
     },
     {
       quote: "The training was excellent. Our team was up and running in less than a week.",
       author: "Learning & Development",
       company: "Vaccine Producer",
       rating: 5,
-      avatar: "LD",
       timeAgo: "5 days ago",
       likes: 16,
       comments: 3,
+      size: "medium" as const,
     },
     {
-      quote: "Real-time visibility across 12 warehouses. Finally, one source of truth.",
+      quote: "One source of truth at last.",
       author: "Logistics Director",
       company: "Cold Chain Specialist",
       rating: 5,
-      avatar: "LG",
       timeAgo: "1 day ago",
       likes: 35,
       comments: 8,
+      size: "small" as const,
     },
     {
       quote: "The cost savings paid for the implementation in the first quarter. Incredible ROI.",
       author: "CFO",
       company: "Regional Pharma Distributor",
       rating: 5,
-      avatar: "CF",
       timeAgo: "3 days ago",
       likes: 52,
       comments: 14,
+      size: "large" as const,
     },
     {
-      quote: "Support team is exceptional. Any issue resolved within hours, not days.",
+      quote: "Any issue resolved within hours, not days.",
       author: "Operations Analyst",
       company: "Contract Packager",
       rating: 5,
-      avatar: "OA",
       timeAgo: "6 days ago",
       likes: 23,
       comments: 6,
+      size: "small" as const,
     },
     {
       quote: "We've eliminated 90% of our Excel-based processes. The error rate dropped to near zero.",
       author: "Process Excellence Lead",
       company: "Injectables Manufacturer",
       rating: 5,
-      avatar: "PE",
       timeAgo: "4 days ago",
       likes: 41,
       comments: 10,
+      size: "medium" as const,
     },
     {
       quote: "Best investment we've made in supply chain technology in 10 years. No exaggeration.",
       author: "CEO",
       company: "Emerging Biotech",
       rating: 5,
-      avatar: "CE",
       timeAgo: "2 days ago",
       likes: 67,
       comments: 18,
+      size: "large" as const,
     },
   ];
 
@@ -200,6 +208,50 @@ export const SocialProof = () => {
   ];
 
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
+
+  const getSizeClasses = (size: 'small' | 'medium' | 'large') => {
+    switch (size) {
+      case 'small':
+        return 'col-span-1';
+      case 'medium':
+        return 'col-span-1 md:col-span-1';
+      case 'large':
+        return 'col-span-1 md:col-span-2';
+    }
+  };
+
+  const getCardStyles = (size: 'small' | 'medium' | 'large') => {
+    switch (size) {
+      case 'small':
+        return 'p-3';
+      case 'medium':
+        return 'p-4';
+      case 'large':
+        return 'p-5 md:p-6';
+    }
+  };
+
+  const getTextStyles = (size: 'small' | 'medium' | 'large') => {
+    switch (size) {
+      case 'small':
+        return 'text-xs';
+      case 'medium':
+        return 'text-sm';
+      case 'large':
+        return 'text-base md:text-lg';
+    }
+  };
+
+  const getAvatarSize = (size: 'small' | 'medium' | 'large') => {
+    switch (size) {
+      case 'small':
+        return 'w-8 h-8';
+      case 'medium':
+        return 'w-10 h-10';
+      case 'large':
+        return 'w-12 h-12';
+    }
+  };
 
   return (
     <section ref={ref} className="section-padding bg-secondary/30">
@@ -221,62 +273,68 @@ export const SocialProof = () => {
           </p>
         </motion.div>
 
-        {/* Skool-style Testimonials */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        {/* Masonry-style Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-              className="bg-card rounded-xl overflow-hidden shadow-soft border border-border"
+              transition={{ delay: 0.1 + index * 0.05, duration: 0.5 }}
+              className={`${getSizeClasses(testimonial.size)} bg-card rounded-xl overflow-hidden shadow-soft border border-border hover:shadow-medium transition-shadow duration-300`}
             >
               {/* Card Header - Profile */}
-              <div className="p-4 pb-3 border-b border-border/50">
+              <div className={`${getCardStyles(testimonial.size)} pb-2 border-b border-border/50`}>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold text-sm">
-                    {testimonial.avatar}
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-semibold text-foreground text-sm">{testimonial.author}</div>
-                    <div className="text-xs text-muted-foreground">{testimonial.timeAgo}</div>
+                  <img 
+                    src={buildingImages[index % buildingImages.length]} 
+                    alt={testimonial.company}
+                    className={`${getAvatarSize(testimonial.size)} rounded-full object-cover border-2 border-primary/20`}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className={`font-semibold text-foreground ${testimonial.size === 'small' ? 'text-xs' : 'text-sm'} truncate`}>
+                      {testimonial.author}
+                    </div>
+                    <div className={`${testimonial.size === 'small' ? 'text-[10px]' : 'text-xs'} text-muted-foreground`}>
+                      {testimonial.timeAgo}
+                    </div>
                   </div>
                 </div>
               </div>
               
               {/* Star Rating */}
-              <div className="px-4 pt-3 flex gap-0.5">
+              <div className={`${getCardStyles(testimonial.size)} pt-2 pb-1 flex gap-0.5`}>
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 0.4 + index * 0.1 + i * 0.05, type: "spring" }}
+                    transition={{ delay: 0.3 + index * 0.05 + i * 0.03, type: "spring" }}
                   >
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star className={`${testimonial.size === 'small' ? 'w-3 h-3' : 'w-4 h-4'} fill-yellow-400 text-yellow-400`} />
                   </motion.div>
                 ))}
               </div>
               
               {/* Content */}
-              <div className="p-4 pt-2">
-                <p className="text-foreground text-sm leading-relaxed mb-2">
-                  {testimonial.quote}
+              <div className={`${getCardStyles(testimonial.size)} pt-1`}>
+                <p className={`text-foreground ${getTextStyles(testimonial.size)} leading-relaxed mb-2`}>
+                  "{testimonial.quote}"
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className={`${testimonial.size === 'small' ? 'text-[10px]' : 'text-xs'} text-muted-foreground`}>
                   {testimonial.company}
                 </p>
               </div>
               
               {/* Card Footer - Engagement */}
-              <div className="px-4 py-3 border-t border-border/50 flex items-center gap-4">
-                <button className="flex items-center gap-1.5 text-muted-foreground hover:text-red-500 transition-colors group">
-                  <Heart className="w-4 h-4 group-hover:fill-red-500" />
-                  <span className="text-xs font-medium">{testimonial.likes}</span>
+              <div className={`${getCardStyles(testimonial.size)} pt-2 border-t border-border/50 flex items-center gap-4`}>
+                <button className="flex items-center gap-1 text-muted-foreground hover:text-red-500 transition-colors group">
+                  <Heart className={`${testimonial.size === 'small' ? 'w-3 h-3' : 'w-4 h-4'} group-hover:fill-red-500`} />
+                  <span className={`${testimonial.size === 'small' ? 'text-[10px]' : 'text-xs'} font-medium`}>{testimonial.likes}</span>
                 </button>
-                <button className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
-                  <MessageCircle className="w-4 h-4" />
-                  <span className="text-xs font-medium">{testimonial.comments}</span>
+                <button className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+                  <MessageCircle className={`${testimonial.size === 'small' ? 'w-3 h-3' : 'w-4 h-4'}`} />
+                  <span className={`${testimonial.size === 'small' ? 'text-[10px]' : 'text-xs'} font-medium`}>{testimonial.comments}</span>
                 </button>
               </div>
             </motion.div>
