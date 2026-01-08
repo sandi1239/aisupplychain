@@ -27,11 +27,19 @@ export const FreeGift = () => {
           <div className="relative bg-card rounded-3xl p-8 md:p-12 shadow-medium border border-accent/20 overflow-hidden">
             {/* Floating gift icon */}
             <motion.div
-              animate={{ y: [0, -10, 0] }}
+              animate={{ 
+                y: [0, -10, 0],
+                rotate: [0, 5, -5, 0],
+              }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-accent/10 flex items-center justify-center"
             >
-              <Gift className="w-12 h-12 text-accent" />
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Gift className="w-12 h-12 text-accent" />
+              </motion.div>
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">

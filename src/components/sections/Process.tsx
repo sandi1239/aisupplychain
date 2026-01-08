@@ -72,11 +72,21 @@ export const Process = () => {
                 className="relative"
               >
                 {/* Step number */}
-                <div className="relative z-10 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-card border-2 border-accent flex items-center justify-center mx-auto lg:mx-0">
+                <motion.div 
+                  className="relative z-10 mb-6"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div 
+                    className="w-12 h-12 rounded-full bg-card border-2 border-accent flex items-center justify-center mx-auto lg:mx-0"
+                    animate={{ 
+                      boxShadow: ["0 0 0 0 rgba(212,175,55,0)", "0 0 0 8px rgba(212,175,55,0.1)", "0 0 0 0 rgba(212,175,55,0)"]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                  >
                     <span className="font-bold text-accent">{step.step}</span>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
                 <div className="text-center lg:text-left">
                   <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mx-auto lg:mx-0 mb-4">

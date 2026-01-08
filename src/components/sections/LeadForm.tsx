@@ -4,6 +4,8 @@ import { ArrowRight, ArrowLeft, Check, User, Mail, MessageSquare, Loader2 } from
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { z } from 'zod';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100),
@@ -73,12 +75,23 @@ export const LeadForm = ({ formRef }: LeadFormProps) => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log('Form submitted:', formData);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const { error } = await supabase.from('leads').insert({
+        name: formData.name!,
+        email: formData.email!,
+        interest: formData.interest!,
+      });
+
+      if (error) throw error;
+      
+      toast.success('Assessment request submitted successfully!');
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const stepVariants = {

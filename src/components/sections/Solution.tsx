@@ -98,11 +98,25 @@ export const Solution = () => {
                       { label: "SKUs Monitored", value: "2,847" },
                       { label: "Alerts Active", value: "3" },
                       { label: "Hours Saved", value: "52" },
-                    ].map((stat) => (
-                      <div key={stat.label} className="rounded-lg bg-white/10 p-3 text-center">
-                        <div className="text-lg font-bold text-primary-foreground">{stat.value}</div>
+                    ].map((stat, index) => (
+                      <motion.div 
+                        key={stat.label} 
+                        className="rounded-lg bg-white/10 p-3 text-center"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
+                        whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
+                      >
+                        <motion.div 
+                          className="text-lg font-bold text-primary-foreground"
+                          initial={{ scale: 0 }}
+                          animate={isInView ? { scale: 1 } : {}}
+                          transition={{ delay: 0.8 + index * 0.1, type: "spring" }}
+                        >
+                          {stat.value}
+                        </motion.div>
                         <div className="text-xs text-primary-foreground/60">{stat.label}</div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 

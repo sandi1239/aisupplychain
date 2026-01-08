@@ -60,22 +60,24 @@ export const Footer = ({ onGetStarted }: FooterProps) => {
 
           {/* Links */}
           <div className="flex items-center gap-6">
-            <a
-              href="mailto:contact@example.com"
+            <motion.a
+              href="mailto:sandi.srkoc@gmail.com"
+              whileHover={{ scale: 1.05 }}
               className="flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors"
             >
               <Mail className="w-5 h-5" />
               <span className="text-sm">Contact</span>
-            </a>
-            <a
-              href="https://linkedin.com"
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/sandi-srkoc/"
               target="_blank"
               rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
               className="flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors"
             >
               <Linkedin className="w-5 h-5" />
               <span className="text-sm">LinkedIn</span>
-            </a>
+            </motion.a>
           </div>
 
           {/* Back to top */}

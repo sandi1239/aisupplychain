@@ -125,9 +125,15 @@ export const PastWork = () => {
                 {project.description}
               </p>
               
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-medium">
+              <motion.div 
+                className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-medium"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, x: -10 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.5 + index * 0.1 }}
+              >
                 ✓ {project.impact}
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

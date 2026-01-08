@@ -66,7 +66,14 @@ export const SocialProof = () => {
               
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.4 + index * 0.1 + i * 0.05, type: "spring" }}
+                  >
+                    <Star className="w-4 h-4 fill-accent text-accent" />
+                  </motion.div>
                 ))}
               </div>
               

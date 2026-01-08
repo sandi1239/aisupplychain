@@ -95,7 +95,14 @@ export const PainPoints = () => {
                 {point.description}
               </p>
               <div className="pt-4 border-t border-border">
-                <div className="text-3xl font-bold text-destructive">{point.stat}</div>
+                <motion.div 
+                  className="text-3xl font-bold text-destructive"
+                  initial={{ scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {point.stat}
+                </motion.div>
                 <div className="text-xs text-muted-foreground">{point.statLabel}</div>
               </div>
             </motion.div>
