@@ -81,10 +81,18 @@ export const Stats = () => {
               transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
               className="group"
             >
-              <div className="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div className={`w-14 h-14 rounded-xl ${stat.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+              <motion.div 
+                className="glass-card rounded-2xl p-6 h-full"
+                whileHover={{ scale: 1.03, y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <motion.div 
+                  className={`w-14 h-14 rounded-xl ${stat.bgColor} flex items-center justify-center mb-4`}
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <stat.icon className={`w-7 h-7 ${stat.color}`} />
-                </div>
+                </motion.div>
                 
                 <div className={`text-4xl md:text-5xl font-bold ${stat.color} mb-2`}>
                   <AnimatedCounter end={stat.value} suffix={stat.suffix} />
@@ -92,7 +100,7 @@ export const Stats = () => {
                 
                 <h3 className="font-semibold text-foreground mb-2">{stat.label}</h3>
                 <p className="text-sm text-muted-foreground">{stat.description}</p>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
