@@ -1,7 +1,10 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Quote, Star, Building2 } from 'lucide-react';
+import { Star, Heart, MessageCircle } from 'lucide-react';
 import avatarImg from '@/assets/avatar.jpg';
+import novartisLogo from '@/assets/novartis-logo.svg';
+import sandozLogo from '@/assets/sandoz-logo.svg';
+import sandozLekLogo from '@/assets/sandoz-lek-logo.png';
 
 export const SocialProof = () => {
   const ref = useRef(null);
@@ -13,24 +16,40 @@ export const SocialProof = () => {
       author: "Supply Chain Director",
       company: "Major Pharma Manufacturing Site",
       rating: 5,
+      avatar: "SC",
+      timeAgo: "2 days ago",
+      likes: 24,
+      comments: 5,
     },
     {
       quote: "The stockout predictions have been incredibly accurate. We prevented three critical shortages in the first quarter alone.",
       author: "Operations Manager",
       company: "Contract Manufacturing Organization",
       rating: 5,
+      avatar: "OM",
+      timeAgo: "1 week ago",
+      likes: 18,
+      comments: 3,
     },
     {
       quote: "Finally, someone who understands pharma supply chain. The ROI was visible within the first month.",
       author: "VP of Operations",
       company: "Mid-Sized Pharmaceutical Company",
       rating: 5,
+      avatar: "VP",
+      timeAgo: "3 days ago",
+      likes: 31,
+      comments: 8,
     },
   ];
 
-  const trustedBy = [
-    "Novartis", "Sandoz", "Lek d.d.", "Global Pharma Partners"
+  const logos = [
+    { src: novartisLogo, alt: "Novartis" },
+    { src: sandozLogo, alt: "Sandoz" },
+    { src: sandozLekLogo, alt: "Sandoz Lek" },
   ];
+
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
 
   return (
     <section ref={ref} className="section-padding bg-secondary/30">
@@ -52,7 +71,7 @@ export const SocialProof = () => {
           </p>
         </motion.div>
 
-        {/* Testimonials */}
+        {/* Skool-style Testimonials */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           {testimonials.map((testimonial, index) => (
             <motion.div
@@ -60,11 +79,23 @@ export const SocialProof = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-              className="bg-card rounded-2xl p-6 shadow-soft border border-border relative"
+              className="bg-card rounded-xl overflow-hidden shadow-soft border border-border"
             >
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-accent/20" />
+              {/* Card Header - Profile */}
+              <div className="p-4 pb-3 border-b border-border/50">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold text-sm">
+                    {testimonial.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-foreground text-sm">{testimonial.author}</div>
+                    <div className="text-xs text-muted-foreground">{testimonial.timeAgo}</div>
+                  </div>
+                </div>
+              </div>
               
-              <div className="flex gap-1 mb-4">
+              {/* Star Rating */}
+              <div className="px-4 pt-3 flex gap-0.5">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <motion.div
                     key={i}
@@ -72,23 +103,31 @@ export const SocialProof = () => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.4 + index * 0.1 + i * 0.05, type: "spring" }}
                   >
-                    <Star className="w-4 h-4 fill-accent text-accent" />
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   </motion.div>
                 ))}
               </div>
               
-              <p className="text-foreground mb-6 leading-relaxed">
-                "{testimonial.quote}"
-              </p>
+              {/* Content */}
+              <div className="p-4 pt-2">
+                <p className="text-foreground text-sm leading-relaxed mb-2">
+                  {testimonial.quote}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {testimonial.company}
+                </p>
+              </div>
               
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Building2 className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground text-sm">{testimonial.author}</div>
-                  <div className="text-xs text-muted-foreground">{testimonial.company}</div>
-                </div>
+              {/* Card Footer - Engagement */}
+              <div className="px-4 py-3 border-t border-border/50 flex items-center gap-4">
+                <button className="flex items-center gap-1.5 text-muted-foreground hover:text-red-500 transition-colors group">
+                  <Heart className="w-4 h-4 group-hover:fill-red-500" />
+                  <span className="text-xs font-medium">{testimonial.likes}</span>
+                </button>
+                <button className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+                  <MessageCircle className="w-4 h-4" />
+                  <span className="text-xs font-medium">{testimonial.comments}</span>
+                </button>
               </div>
             </motion.div>
           ))}
@@ -107,56 +146,71 @@ export const SocialProof = () => {
                 <img 
                   src={avatarImg} 
                   alt="Sandi - Pharmaceutical Supply Chain Expert" 
-                  className="w-32 h-32 rounded-2xl object-cover shadow-lg"
+                  className="w-32 h-32 rounded-full object-cover border-4 border-accent shadow-lg"
                 />
-                <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-accent flex items-center justify-center">
-                  <span className="text-accent-foreground font-bold text-sm">11+</span>
+                <div className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
+                  15+ Years
                 </div>
               </div>
               <h3 className="font-serif text-2xl font-bold text-foreground mb-2">Sandi</h3>
-              <p className="text-muted-foreground text-center md:text-left">
-                Supply Chain Analyst at Sandoz Pharma / Novartis
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-serif text-xl font-semibold text-foreground mb-4">
-                11+ Years of Pharma Supply Chain Expertise
-              </h4>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                I've spent over a decade at Lek d.d. Lendava (Novartis/Sandoz) solving the exact problems 
-                you're facing. My automations save real time and prevent real stockouts—because they were 
-                built from the inside, for real pharmaceutical operations.
-              </p>
+              <p className="text-primary font-medium mb-4">Pharmaceutical Supply Chain Expert</p>
               <div className="flex flex-wrap gap-2">
-                {['Excel/VBA Expert', 'SAP Integration', 'AI Automation', 'Supply Chain Planning'].map((skill) => (
-                  <span 
-                    key={skill}
-                    className="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-medium"
-                  >
+                {["SAP Expert", "Power BI", "Supply Planning", "Process Automation"].map((skill) => (
+                  <span key={skill} className="px-3 py-1 bg-secondary text-foreground text-xs rounded-full">
                     {skill}
                   </span>
                 ))}
               </div>
             </div>
+            
+            <div>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                With over <span className="text-foreground font-semibold">15 years at Novartis/Sandoz</span>, 
+                I've lived through the daily frustrations of pharmaceutical supply chain operations. 
+                From managing global supply networks to implementing enterprise-wide automation, 
+                I understand both the technical and practical challenges you face.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Now, I help pharmaceutical companies implement the same automation solutions 
+                that saved my teams <span className="text-foreground font-semibold">thousands of hours annually</span>. 
+                My approach combines deep industry knowledge with practical, proven solutions.
+              </p>
+            </div>
           </div>
         </motion.div>
+      </div>
 
-        {/* Trust logos */}
+      {/* Animated Logo Banner */}
+      <div className="mt-16 overflow-hidden border-t border-border/50 pt-8">
+        <p className="text-center text-sm text-muted-foreground mb-6">
+          Experience from industry leaders
+        </p>
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="mt-12 text-center"
+          className="flex items-center gap-16 md:gap-24"
+          animate={{
+            x: [0, -1200],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
         >
-          <p className="text-sm text-muted-foreground mb-6">Experience from industry leaders</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {trustedBy.map((company) => (
-              <div key={company} className="text-lg font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                {company}
-              </div>
-            ))}
-          </div>
+          {duplicatedLogos.map((logo, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 h-10 md:h-12 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity"
+            >
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="h-full w-auto object-contain max-w-[180px] md:max-w-[220px]"
+              />
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
