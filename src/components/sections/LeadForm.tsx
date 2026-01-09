@@ -76,6 +76,7 @@ export const LeadForm = ({ formRef }: LeadFormProps) => {
     setIsSubmitting(true);
     
     try {
+      // Save to database
       const { error } = await supabase.from('leads').insert({
         name: formData.name!,
         email: formData.email!,
@@ -83,6 +84,20 @@ export const LeadForm = ({ formRef }: LeadFormProps) => {
       });
 
       if (error) throw error;
+
+      // Send confirmation email
+      const { error: emailError } = await supabase.functions.invoke('send-lead-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          interest: formData.interest,
+        },
+      });
+
+      if (emailError) {
+        console.error('Email error:', emailError);
+        // Don't fail the submission if email fails
+      }
       
       toast.success('Assessment request submitted successfully!');
       setIsSubmitted(true);
