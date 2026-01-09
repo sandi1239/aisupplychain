@@ -52,7 +52,7 @@ export const Footer = ({ onGetStarted }: FooterProps) => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-xl font-bold mb-2">Pharma Supply Chain Automation</h3>
+            <h3 className="font-serif text-xl font-bold mb-2">PharmaSync</h3>
             <p className="text-primary-foreground/60 text-sm">
               Transforming pharmaceutical operations with intelligent automation
             </p>
@@ -93,7 +93,7 @@ export const Footer = ({ onGetStarted }: FooterProps) => {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-primary-foreground/10 text-center">
           <p className="text-primary-foreground/50 text-sm">
-            © {new Date().getFullYear()} Pharma Supply Chain Automation. All rights reserved.
+            © {new Date().getFullYear()} PharmaSync. All rights reserved.
           </p>
         </div>
       </div>
