@@ -55,7 +55,7 @@ export const Navbar = ({ onGetStarted }: NavbarProps) => {
               <span className="font-serif font-bold text-accent-foreground text-lg">S</span>
             </div>
             <span className="font-serif font-bold text-primary-foreground text-lg hidden sm:block">
-              SupplyChain<span className="gold-text">AI</span>
+              Pharma<span className="gold-text">Sync</span>
             </span>
           </a>
 
