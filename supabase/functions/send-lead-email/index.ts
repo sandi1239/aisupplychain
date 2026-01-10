@@ -32,14 +32,14 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "PharmaSync <onboarding@resend.dev>",
-        to: [email],
-        subject: "Thank you for your interest!",
+        to: ["sandi.srkoc@gmail.com"],
+        subject: `New Lead: ${name}`,
         html: `
-          <h1>Thank you for reaching out, ${name}!</h1>
-          <p>I've received your request and will review your information shortly.</p>
-          <p><strong>Your interest:</strong> ${interest === 'offer' ? 'DOC Dashboard Automation Offer' : 'Custom automation or consulting'}</p>
-          <p>I'll get back to you within 24-48 hours to discuss how we can transform your supply chain operations.</p>
-          <p>Best regards,<br>The Team</p>
+          <h1>New Lead Submission</h1>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Interest:</strong> ${interest === 'offer' ? 'DOC Dashboard Automation Offer' : 'Custom automation or consulting'}</p>
+          <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
         `,
       }),
     });
